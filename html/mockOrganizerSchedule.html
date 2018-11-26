@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>mockOrganizerSchedule</title>
+        <script type = "text/javascript">
+            var forTestJSONStartD = {value:12/11/2017}
+            var testJSONStartD = JSON.stringify(forTestJSONStartD);
+            var testParsedJSON = JSON.parse(testJSONStartD);
+            var testStartD = testParsedJSON.value;
+            document.getElementById("SD").innerHTML = "Start Date is" + testStartD;
+        </script>
+    </head>
+
+    <body>
+        <h1>Meeting Title</h1>
+        <!--<script type = "text/javascript"> JSON.parse()</script>-->
+        <p id ="SD">Start Date is DD/MM/YYYY <input type="button" value="Extend"></p> 
+        <p>End Date is DD/MM/YYYY <input type="button" value="Extend"></p>
+        <p>Time Slots are MM minutes long</p>
+        <p>The first slot each day is at HH:00</p>
+        <p>The last slot each day is at HH:00</p>
+        <form action="mockWeek.html"> <!--add identifier for the scheduler when redirecting-->
+            <input type="submit" value="Show first week" />
+        </form>
+        <p><input type="button" value="Delete Schedule"/></p>
+    </body>
+</html>
