@@ -3,6 +3,36 @@
     <head>
         <meta charset="UTF-8">
         <title>mockMeeting</title>
+        <script type = "text/javascript">
+
+            function Meeting1(name,email){
+                this.name=name;
+                this.email=email;
+            }
+
+            function Meeting2(name){
+                this.name=name;
+            }
+            
+            function Meeting3(email){
+                this.email=email;
+            }
+    
+            function createMeeting(){
+                if((document.getElementById("name")=="")&&(document.getElementById("email")=="")){
+                    alert("Please fill in at least one field");
+                }
+                else if(document.getElementById("name")==""){
+                    var newMeeting = new Meeting3(document.getElementById("email"));
+                }
+                else if(document.getElementById("email")==""){
+                    var newMeeting = new Meeting2(document.getElementById("name"));
+                }
+                else{
+                    var newMeeting = new Meeting1(document.getElementById("name"), document.getElementById("email"));
+                }
+            }
+        </script>
     </head>
 
     <body>
@@ -24,7 +54,9 @@
                         value="john@email.com"/>
                 </p>
                 <p>
-                    <input type="submit">
+                    <input type="button"
+                        value="Create Meeting"
+                        onclick="createMeeting"/>
                 </p>
             </fieldset>
         </form>
