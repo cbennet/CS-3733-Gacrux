@@ -2,11 +2,31 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>mockOrganizerForm</title>
+        <title>mockAdmin</title>
     </head>
 
     <body>
-        <h1>Create Schedule</h1>
+        <h1>Administrator Portal</h1>
         <form action="">
             <fieldset>
-                <legend>Schedule Setup</legend>
+                <legend>Admin Actions</legend>
+                <!--number deleted-->
+                <p>
+                    <label>Delete Schedules older than</label>
+                    <input type = "number"/>
+                    <label>days</label>
+                    <input type = "button" value = "Delete">
+                </p>
+                <!--number created and list of names-->
+                <p>
+                        <label>Show activity for schedules newer than</label>
+                        <input type = "number"/>
+                        <label>hours</label>
+                        <form action="mockScheduleList.html">
+                            <input type="submit" value="Show" />
+                        </form>
+                    </p>
+                </fieldset>
+            </form>
+        </body>
+    </html>
