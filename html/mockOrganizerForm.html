@@ -3,13 +3,45 @@
     <head>
         <meta charset="UTF-8">
         <title>mockOrganizerForm</title>
+
+        <script type = "text/javascript">
+
+        function Schedule(title,startD,startM,StartY,endD,endM,endY,dur,statH,endH){
+            this.title=title;
+            this.startD=startD;
+            this.startM=startM;
+            this.startY=startY;
+            this.endD=endD;
+            this.endM=endM;
+            this.endY=endY;
+            this.dur=dur;
+            this.startH=startH;
+            this.endH=endH;
+        }
+
+        function createSchedule(){
+            //Tyler's other verifications go in if here
+                newSchedule = new schedule(
+                    document.getElementById("title"),
+                    document.getElementById("startD"),
+                    document.getElementById("startM"),
+                    document.getElementById("startY"),
+                    document.getElementById("endD"),
+                    document.getElementById("endM"),
+                    document.getElementById("endY"),
+                    document.getElementById("dur"),
+                    document.getElementById("startH"),
+                    document.getElementById("endH")
+                 );    
+        }
+        </script>
     </head>
 
     <body>
         <h1>Create Schedule</h1>
 
 <!--Use "form action" below to connect the submit button and send organizer to a view page-->
-<!--Currently the submit button does nothing-->
+<!--Currently the submit button creates a schedule var from form data-->
 
         <form action="mockSchedule.html">
             <fieldset>
@@ -17,14 +49,15 @@
             <p>
                 <label>Meeting Schedule Title</label>
                 <input type = "text"
-                    value="Advisor Meetings"/>
+                    value="Advisor Meetings"
+                    id="title"
+                    required/>
             </p>
-
 
             <p>
                 <label>Start Date</label>
 <!--Day-->
-                <select>
+                <select id = "startD">             
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -58,7 +91,7 @@
                         <option value="31">31</option>
                 </select>
 <!--Month-->
-                <select>
+                <select id = "startM">
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -74,13 +107,15 @@
                 </select>      
 <!--Year-->
                 <input type = "number"
-                value = "2018"/>
+                value = "2018"
+                id = "startY"
+                required/>
             </p>
 
             <p>
                 <label>End Date</label>
                 <!--Day-->
-                <select>
+                <select id = "endD">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -114,7 +149,7 @@
                         <option value="31">31</option>
                 </select>
 <!--Month-->
-                <select>
+                <select id = "endM">
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -130,12 +165,14 @@
                 </select>      
 <!--Year-->
                 <input type = "number"
-                value = "2018"/>
+                value = "2018"
+                id = "endY"
+                required/>
             </p>
 
             <p>
                     <label>Time Slot Duration</label>
-                    <select>
+                    <select id = "dur">
                         <option value="10">10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
@@ -146,7 +183,7 @@
     
             <p>
                 <label>Daily Start Time</label>
-                <select>
+                <select id = "startH">
                     <option value="0">0:00</option>
                     <option value="1">1:00</option>
                     <option value="2">2:00</option>
@@ -176,7 +213,7 @@
 
             <p>
                 <label>Daily End Time</label>
-                <select>
+                <select id = "endH">
                     <option value="1">1:00</option>
                     <option value="2">2:00</option>
                     <option value="3">3:00</option>
@@ -205,7 +242,7 @@
             </select>
             </p>    
             <p>
-                <input type="submit" value="Create" />
+                <input type="button" value="Create" onclick="createSchedule"/>
             </p>
         </fieldset>
         </form>
