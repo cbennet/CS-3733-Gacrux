@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.amazonaws.model.Meeting;
+
 public class MeetingsDAO {
 	
 	java.sql.Connection conn;
@@ -17,6 +19,6 @@ public class MeetingsDAO {
 	}
 	
 	public Meeting getMeeting() {
-		
+		return null;
 	}
 }
