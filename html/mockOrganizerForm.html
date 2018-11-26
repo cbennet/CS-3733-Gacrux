@@ -11,7 +11,7 @@
 <!--Use "form action" below to connect the submit button and send organizer to a view page-->
 <!--Currently the submit button does nothing-->
 
-        <form action="">
+        <form action="mockSchedule.html">
             <fieldset>
                 <legend>Schedule Setup</legend>
             <p>
@@ -20,16 +20,6 @@
                     value="Advisor Meetings"/>
             </p>
 
-            <p>
-                <label>Time Slot Duration</label>
-                <select>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="60">60</option>
-                </select>
-            </p>
 
             <p>
                 <label>Start Date</label>
@@ -144,6 +134,17 @@
             </p>
 
             <p>
+                    <label>Time Slot Duration</label>
+                    <select>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                    </select>
+                </p>
+    
+            <p>
                 <label>Daily Start Time</label>
                 <select>
                     <option value="0">0:00</option>
@@ -203,9 +204,8 @@
 
             </select>
             </p>    
-            
             <p>
-                <input type="submit">
+                <input type="submit" value="Create" />
             </p>
         </fieldset>
         </form>
