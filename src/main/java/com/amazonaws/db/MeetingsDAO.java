@@ -4,7 +4,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
 import com.amazonaws.model.Meeting;
 
@@ -50,6 +49,52 @@ public class MeetingsDAO {
 			return (numAffected == 1);
 		} catch (Exception e) {
 			throw new Exception("Failed to delete constant: " + e.getMessage());
+		}
+	}
+	
+	public boolean addMeeting(Meeting meeting) throws Exception {
+		try {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM meetings WHERE secretID=?;");
+			ps.setString(1, meeting.secretID);
+			ResultSet resultSet = ps.executeQuery();
+			
+			//Already present
+			while (resultSet.next()) {
+				Meeting m = generateMeeting(resultSet);
+				resultSet.close();
+				return false;
+			}
+			
+			ps = conn.prepareStatement("INSERT INTO meetings (participant,secretID,meetingID,startTime,date,isLocked) values(?,?,?,?,?,?);");
+			ps.setString(1, meeting.participant);
+			ps.setString(2, meeting.secretID);
+			ps.setString(3, meeting.meetingID);
+			ps.setInt(4, meeting.startTime);
+			//TODO set sql date in ps.setDate(5, meeting.date) but in sql date format
+			ps.setBoolean(6, meeting.isLocked);
+			ps.execute();
+			return true;
+		} catch (Exception e) {
+			throw new Exception("Failed to insert meeting: " + e.getMessage());
+		}
+	}
+	
+	public List<Meeting> getAllMeetings() throws Exception {
+		List<Meeting> allMeetings = new ArrayList<>();
+		try {
+			Statement statement = conn.createStatement();
+			String query = "SELECT * FROM meetings";
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while (resultSet.next()) {
+				Meeting m = generateMeeting(resultSet);
+				allMeetings.add(m);
+			}
+			resultSet.close();
+			statement.close();
+			return allMeetings;
+		} catch (Exception e) {
+			throw new Exception("Failed in getting books: " + e.getMessage());
 		}
 	}
 	

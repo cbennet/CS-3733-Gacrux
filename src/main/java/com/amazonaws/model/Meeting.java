@@ -3,7 +3,7 @@ package com.amazonaws.model;
 import java.time.LocalDate;
 
 public class Meeting {
-	public String participant = null;
+	public final String participant;
 	public final String secretID;
 	public final String meetingID;
 	public final int startTime;
