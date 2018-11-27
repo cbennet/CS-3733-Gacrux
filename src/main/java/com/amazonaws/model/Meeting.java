@@ -1,16 +1,17 @@
 package com.amazonaws.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Meeting {
-	public String participant = null;
+	public final String participant;
 	public final String secretID;
 	public final String meetingID;
 	public final int startTime;
-	public final Date date;
+	public final LocalDate date;
 	public final boolean isLocked;
 	
-	public Meeting(String secretID, String meetingID, int startTime, Date date, boolean isLocked) {
+	public Meeting(String participant,String secretID, String meetingID, int startTime, LocalDate date, boolean isLocked) {
+		this.participant = participant;
 		this.secretID = secretID;
 		this.meetingID = meetingID;
 		this.startTime = startTime;
