@@ -66,11 +66,12 @@ public class MeetingsDAO {
 			}
 			
 			ps = conn.prepareStatement("INSERT INTO meetings (participant,secretID,meetingID,startTime,date,isLocked) values(?,?,?,?,?,?);");
+			Date date = Date.valueOf(meeting.date);
 			ps.setString(1, meeting.participant);
 			ps.setString(2, meeting.secretID);
 			ps.setString(3, meeting.meetingID);
 			ps.setInt(4, meeting.startTime);
-			//TODO set sql date in ps.setDate(5, meeting.date) but in sql date format
+			ps.setDate(5, date);
 			ps.setBoolean(6, meeting.isLocked);
 			ps.execute();
 			return true;
