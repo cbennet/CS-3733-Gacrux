@@ -35,7 +35,7 @@ public class MeetingsDAO {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new Exception("Failed in gettting constant: " + e.getMessage());
+			throw new Exception("Failed in gettting meeting: " + e.getMessage());
 		}
 	}
 	
